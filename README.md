@@ -60,7 +60,8 @@ export default {
 ### (2) 보상형 광고 그룹 ID(adGroupId)
 
 1. 콘솔 → **인앱 광고(IAA)** → 광고 그룹 만들기 → **보상형(Rewarded)** 선택
-2. 발급된 ID(`ait-...`)를 아래 **둘 중 한 곳**에 넣으면 돼요.
+2. 발급된 ID(`ait.v2.live....`)를 아래 **둘 중 한 곳**에 넣으면 돼요.
+   (현재 발급받은 실제 ID `ait.v2.live.a3b6ece2fba24488` 가 코드 기본값·`.env.example` 에 반영돼 있어요.)
 
 **방법 A — 코드에 직접 (가장 간단)**
 
@@ -68,7 +69,7 @@ export default {
 // src/tossAds.ts
 export const AD_GROUP_ID: string =
   ((import.meta.env?.VITE_AIT_AD_GROUP_ID as string | undefined) ?? '').trim() ||
-  'ait-ad-test-rewarded-id';   // ← 이 문자열을 발급받은 ID로 교체
+  'ait.v2.live.a3b6ece2fba24488';   // ← 발급받은 ID (테스트로 돌릴 땐 ait-ad-test-rewarded-id)
 ```
 
 **방법 B — 환경변수/저장소 변수 (코드는 그대로)**
@@ -79,11 +80,11 @@ export const AD_GROUP_ID: string =
 
 ```bash
 # .env
-VITE_AIT_AD_GROUP_ID=ait-발급받은-광고그룹-ID
+VITE_AIT_AD_GROUP_ID=ait.v2.live.a3b6ece2fba24488
 ```
 
-> 발급 전에도 테스트 ID(`ait-ad-test-rewarded-id`)로 광고가 뜨긴 하지만, 테스트 광고라
-> `event.data.unitType`/`unitAmount` 값이 비어 있을 수 있어요. 보상 지급 자체는
+> `VITE_AIT_AD_GROUP_ID=ait-ad-test-rewarded-id` 로 테스트 광고도 띄울 수 있어요. 테스트 광고는
+> `event.data.unitType`/`unitAmount` 값이 비어 있을 수 있지만, 보상 지급 자체는
 > `userEarnedReward` 이벤트로 판단하므로 그대로 동작해요.
 
 ---

@@ -11,13 +11,13 @@ import { loadFullScreenAd, showFullScreenAd } from '@apps-in-toss/web-framework'
 /**
  * 보상형 광고 그룹 ID
  *
- * - 기본값은 앱인토스 공식 테스트 ID(`ait-ad-test-rewarded-id`)예요.
- * - 실제 배포할 때는 앱인토스 콘솔 > 인앱 광고(IAA)에서 보상형 광고 그룹을 만들고
- *   발급받은 ID로 바꿔주세요. (또는 빌드 환경변수 `VITE_AIT_AD_GROUP_ID` 로 주입)
+ * - 기본값은 앱인토스 콘솔 > 인앱 광고(IAA)에서 발급받은 실제 보상형 광고 그룹 ID예요.
+ * - 다른 ID로 빌드해야 할 때는 환경변수 `VITE_AIT_AD_GROUP_ID` 로 덮어쓸 수 있어요.
+ *   (테스트용: `VITE_AIT_AD_GROUP_ID=ait-ad-test-rewarded-id`)
  */
 export const AD_GROUP_ID: string =
   ((import.meta.env?.VITE_AIT_AD_GROUP_ID as string | undefined) ?? '').trim() ||
-  'ait-ad-test-rewarded-id';
+  'ait.v2.live.a3b6ece2fba24488';
 
 /** 광고 시도 결과 */
 export type AdOutcome = 'rewarded' | 'dismissed' | 'failed' | 'unsupported';
