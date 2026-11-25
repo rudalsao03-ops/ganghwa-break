@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0f1226">
+<meta name="description" content="무기를 강화하고 건물을 부수는 방치형 철거 게임">
+<title>강화 부수기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@500;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+  <div id="hud">
+    <span class="pill" id="gold">0 원</span>
+    <button class="pill" id="btnBoss">보스 도전</button>
+    <button class="pill" id="btnRank">🏆 랭킹</button>
+    <button class="pill" id="btnMute">소리 켬</button>
+  </div>
+  <div id="wrap"><canvas id="cv"></canvas></div>
+  <div id="panel">
+    <div class="tab on" id="tUp">
+      <div id="lvRow"><span id="lv">+0 나무 몽둥이</span><span id="dmg">공격력 5</span></div>
+      <div class="stats">
+        <div class="stat"><small>성공 확률</small><b id="sRate">100%</b></div>
+        <div class="stat"><small>실패 시</small><b id="sFail">유지</b></div>
+        <div class="stat"><small>파괴 확률</small><b id="sBreak">0%</b></div>
+      </div>
+      <div class="btns">
+        <button id="btnUp"><span id="gauge"></span><span id="upTxt">강화하기</span><small id="cost">30 원</small></button>
+        <button id="btnSell">판매<br><span id="sellAmt">0 원</span></button>
+      </div>
+      <div class="sub">
+        <label><input type="checkbox" id="useProt">방지권 <span id="protN">0</span>개 사용</label>
+        <button id="btnAd">광고 보고 방지권 +1</button>
+      </div>
+    </div>
+    <div class="tab" id="tCrew">
+      <div class="head"><span>용병은 자동으로 건물을 부숴요</span><span>초당 <b id="crewDps">0</b></span></div>
+      <div id="crewList"></div>
+    </div>
+    <div class="tab" id="tCodex">
+      <div class="head"><span>처음 달성하면 보너스 골드</span><span><b id="codexN">0</b> / 27</span></div>
+      <div id="codex"></div>
+    </div>
+    <div id="tabs">
+      <button class="on" data-t="tUp">강화</button>
+      <button data-t="tCrew">용병</button>
+      <button data-t="tCodex">무기 도감</button>
+    </div>
+  </div>
+</div>
+<div id="res"></div>
+<div id="flash"></div>
+<div id="toast"></div>
+<div class="ov" id="ovAd"><div class="card">
+  <h2>광고 시청 중</h2>
+  <p id="adNote">토스 보상형 광고 자리에요</p>
+  <h2 id="adN">3</h2>
+</div></div>
+<div class="ov" id="ovRank"><div class="card">
+  <h2>철거왕 기록</h2>
+  <div class="nickRow"><input id="nick" maxlength="10" placeholder="닉네임 (10자)" autocomplete="off"><button id="nickSave">저장</button></div>
+  <div id="rBest">
+    <div><small>최고 층수</small><b id="rBestFloor">-</b></div>
+    <div><small>최고 강화</small><b id="rBestLv">-</b></div>
+  </div>
+  <div id="rTabs"><button class="on" data-m="floor">최고 층수</button><button data-m="lv">최고 강화</button></div>
+  <div id="rStatus"></div>
+  <ol id="rList"></ol>
+  <button class="ghost" id="rClose">닫기</button>
+</div></div>
+<div class="ov" id="ovWelcome"><div class="card">
+  <h2 id="wTitle">돌아왔군요!</h2>
+  <p id="wMsg"></p>
+  <h2 id="wGold" style="color:var(--gold)"></h2>
+  <p id="wDaily" style="color:var(--blue)"></p>
+  <button class="big" id="wDouble">광고 보고 2배 받기</button>
+  <button class="ghost" id="wOk">그냥 받기</button>
+</div></div>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

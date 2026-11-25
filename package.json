@@ -1,0 +1,23 @@
+{
+  "name": "ganghwa-break",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "앱인토스 미니앱 - 강화 부수기 (무기 강화 + 철거 디펜스)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:ait": "vite build && ait build",
+    "preview": "vite preview --port 4173",
+    "typecheck": "tsc --noEmit",
+    "deploy": "ait deploy"
+  },
+  "dependencies": {
+    "@apps-in-toss/web-framework": "^3.11.0"
+  },
+  "devDependencies": {
+    "@apps-in-toss/cli": "^3.11.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
+  }
+}
